@@ -3,7 +3,7 @@
     "width": "container",
     "height": "container",
     "title": "Maximum river heights during the 2022 Northern Victoria floods",
-    "projection": {"type": "equalEarth"},
+    "projection": {"type": "equirectangular"},
     "layer": [
       {
         "data": {
@@ -30,6 +30,13 @@
         "data": {
           "url": "js/rivers.topojson",
           "format": {"type": "topojson", "feature": "rivers"}
+        },
+        "mark": {"type": "geoshape", "fill": null, "stroke": "lightgray"}
+      },
+      {
+        "data": {
+          "url": "js/graticles.topojson",
+          "format": {"type": "topojson", "feature": "graticles"}
         },
         "mark": {"type": "geoshape", "fill": null, "stroke": "lightgray"}
       },
