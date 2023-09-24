@@ -3,35 +3,45 @@
     "width": "container",
     "height": "container",
     "title": "Maximum river heights during the 2022 Northern Victoria floods",
-    "projection": {"type": "equirectangular"},
+    "projection": {
+      "type": "equirectangular",
+      "center": [144.7, -36.5],
+      "scale": 40000
+    },
     "layer": [
       {
         "data": {
           "url": "js/reservoirs.topojson",
           "format": {"type": "topojson", "feature": "reservoirs"}
         },
-        "mark": {"type": "geoshape", "fill": "lightgray", "stroke": "white"}
+        "mark": {"type": "geoshape", "fill": "lightblue", "stroke": "lightblue"}
       },
       {
         "data": {
           "url": "js/victoria.topojson",
           "format": {"type": "topojson", "feature": "victoria"}
         },
-        "mark": {"type": "geoshape", "fill": null, "stroke": "lightgray"}
+        "mark": {"type": "geoshape", "fill": null, "stroke": "lightgray", "strokeWidth": 4}
       },
       {
         "data": {
           "url": "js/towns.topojson",
           "format": {"type": "topojson", "feature": "towns"}
         },
-        "mark": {"type": "geoshape", "fill": null, "stroke": "lightgray"}
+        "layer": [{
+        "mark": {"type": "geoshape", "fill": null, "stroke": "lightgray", "strokeWidth": 2}
+        },
+        {
+          "mark": {"type": "text", "dy": -10},
+          "encoding": {"text": {"field": "name", "type": "nominal"}}
+        }]
       },
       {
         "data": {
           "url": "js/rivers.topojson",
           "format": {"type": "topojson", "feature": "rivers"}
         },
-        "mark": {"type": "geoshape", "fill": null, "stroke": "lightgray"}
+        "mark": {"type": "geoshape", "fill": null, "stroke": "lightblue", "strokeWidth": 2}
       },
       {
         "data": {
@@ -58,7 +68,11 @@
             "field": "Days",
             "type": "quantitative",
             "title": "Days since 01/10/2022 that maximum was reached",
-            "scale": {"scheme": "reds"}
+            "scale": {
+              "type": "threshold",
+              "scheme": "greens",
+              "domain": [12, 13, 14, 15, 16]
+            }
           }
         }
       }
