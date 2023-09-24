@@ -1,0 +1,59 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": "container",
+    "height": "container",
+    "title": "Maximum river heights during the 2022 Northern Victoria floods",
+    "projection": {"type": "equalEarth"},
+    "layer": [
+      {
+        "data": {
+          "url": "js/reservoirs.topojson",
+          "format": {"type": "topojson", "feature": "reservoirs"}
+        },
+        "mark": {"type": "geoshape", "fill": "lightgray", "stroke": "white"}
+      },
+      {
+        "data": {
+          "url": "js/victoria.topojson",
+          "format": {"type": "topojson", "feature": "victoria"}
+        },
+        "mark": {"type": "geoshape", "fill": null, "stroke": "lightgray"}
+      },
+      {
+        "data": {
+          "url": "js/towns.topojson",
+          "format": {"type": "topojson", "feature": "towns"}
+        },
+        "mark": {"type": "geoshape", "fill": null, "stroke": "lightgray"}
+      },
+      {
+        "data": {
+          "url": "js/rivers.topojson",
+          "format": {"type": "topojson", "feature": "rivers"}
+        },
+        "mark": {"type": "geoshape", "fill": null, "stroke": "lightgray"}
+      },
+      {
+        "data": {
+          "url": "data/water_levels.csv"
+        },
+        "mark": {"type": "circle", "tooltip": {"content": "data"}},
+        "encoding": {
+          "longitude": {"field": "Longitude", "type": "quantitative"},
+          "latitude": {"field": "Latitude", "type": "quantitative"},
+          "size": {
+            "field": "Max Height",
+            "type": "quantitative",
+            "title": "Maximum height compared to 01/10/2022 (m)",
+            "scale": {"domain": [0, 11]}
+          },
+          "color": {
+            "field": "Days",
+            "type": "quantitative",
+            "title": "Days since 01/10/2022 that maximum was reached",
+            "scale": {"scheme": "reds"}
+          }
+        }
+      }
+    ]
+  }
