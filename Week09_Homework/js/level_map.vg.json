@@ -140,12 +140,15 @@
               0,
               2000
             ]
+          },
+          "legend": {
+            "orient": "bottom"
           }
         },
         "color": {
           "field": "Days",
           "type": "quantitative",
-          "title": "Days since 01/10/2022 that maximum was reached",
+          "title": "Days since 01/10/2022 of peak",
           "scale": {
             "type": "threshold",
             "scheme": "greens",
@@ -157,12 +160,28 @@
               20
             ],
             "reverse": true
+          },
+          "legend": {
+            "orient": "bottom"
           }
         },
         "tooltip": [
-          {"field": "Name", "type": "nominal", "title": "Station"},
-          {"field": "Max Height", "type": "quantitative", "title": "Maximum height increase from 01/10/2022", "format": "m"},
-          {"field": "Days", "type": "quantitative", "title": "Days since 01/10/2022 of maximum height"}
+          {
+            "field": "Name",
+            "type": "nominal",
+            "title": "Station"
+          },
+          {
+            "field": "Max Height",
+            "type": "quantitative",
+            "title": "Maximum height increase from 01/10/2022",
+            "format": "m"
+          },
+          {
+            "field": "Days",
+            "type": "quantitative",
+            "title": "Days since 01/10/2022 of maximum height"
+          }
         ]
       }
     }
