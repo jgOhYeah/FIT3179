@@ -1,0 +1,37 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": "container",
+  "height": "container",
+  "title": {
+    "text": "Water levels over time"
+  },
+  "data": {
+    "url": "data/River_Heights_Selected.csv"
+  },
+  "encoding": {
+    "x": {
+      "field": "Day",
+      "type": "temporal"
+    },
+    "y": {
+      "field": "Mean",
+      "type": "quantitative"
+    },
+    "color": {
+      "field": "Station",
+      "type": "nominal"
+    }
+  },
+  "mark": "line",
+  "params": [{
+    "name": "Basin",
+    "value": "Campaspe River at Echuca",
+    "bind": {
+      "input": "checkbox",
+      "name": "Station"
+    }
+  }],
+  "transform": [
+    {"filter": "datum.Station == Basin"}
+  ]
+}
