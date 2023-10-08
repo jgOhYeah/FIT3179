@@ -2,62 +2,188 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "width": "container",
   "height": "container",
-  "title": {
-    "text": "Water levels over time"
+  "title": "Maximum river heights during the 2022 Northern Victoria floods",
+  "projection": {
+    "type": "equirectangular",
+    "center": [
+      144.7,
+      -36.5
+    ],
+    "scale": 40000
   },
-  "data": {
-    "url": "data/River_Heights_Selected.csv"
-  },
-  "encoding": {
-    "x": {
-      "field": "Day",
-      "type": "temporal",
-      "axis": {
-        "title": "Date"
-      }
-    },
-    "y": {
-      "field": "Mean",
-      "type": "quantitative",
-      "axis": {
-        "title": "River height (m)"
-      }
-    },
-    "color": {
-      "field": "Station",
-      "type": "nominal"
-    },
-    "tooltip": [
-      {
-        "field": "Station",
-        "type": "nominal"
-      },
-      {
-        "field": "Mean",
-        "type": "quantitative",
-        "format": ".1f",
-        "title": "Water level (m)"
-      }
-    ]
-  },
-  "mark": "line",
-  "params": [
+  "layer": [
     {
-      "name": "Basin",
-      "value": "Campaspe River Basin",
-      "bind": {
-        "input": "select",
-        "options": [
-          "Campaspe River Basin",
-          "Murray Basin",
-          "Goulburn River Basin"
+      "data": {
+        "url": "data/reservoirs.topojson",
+        "format": {
+          "type": "topojson",
+          "feature": "reservoirs"
+        }
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": "lightblue",
+        "stroke": "lightblue"
+      }
+    },
+    {
+      "data": {
+        "url": "data/victoria.topojson",
+        "format": {
+          "type": "topojson",
+          "feature": "victoria"
+        }
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": null,
+        "stroke": "gray",
+        "strokeWidth": 4
+      }
+    },
+    {
+      "data": {
+        "url": "data/towns.csv"
+      },
+      "encoding": {
+        "longitude": {
+          "field": "X",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "Y",
+          "type": "quantitative"
+        }
+      },
+      "layer": [
+        {
+          "mark": {
+            "type": "circle",
+            "fill": "lightgray",
+            "stroke": "lightgray",
+            "strokeWidth": 2
+          }
+        },
+        {
+          "mark": {
+            "type": "text",
+            "dy": -10,
+            "align": "left"
+          },
+          "encoding": {
+            "text": {
+              "field": "name",
+              "type": "nominal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "data": {
+        "url": "data/rivers.topojson",
+        "format": {
+          "type": "topojson",
+          "feature": "rivers"
+        }
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": null,
+        "stroke": "lightblue",
+        "strokeWidth": 2
+      }
+    },
+    {
+      "data": {
+        "url": "dta/graticles.topojson",
+        "format": {
+          "type": "topojson",
+          "feature": "graticles"
+        }
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": null,
+        "stroke": "lightgray"
+      }
+    },
+    {
+      "data": {
+        "url": "data/water_levels.csv"
+      },
+      "mark": {
+        "type": "circle",
+        "tooltip": {
+          "content": "data"
+        }
+      },
+      "encoding": {
+        "longitude": {
+          "field": "Longitude",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "Latitude",
+          "type": "quantitative"
+        },
+        "size": {
+          "field": "Max Height",
+          "type": "quantitative",
+          "title": "Maximum height compared to 01/10/2022 (m)",
+          "scale": {
+            "domain": [
+              0,
+              10
+            ],
+            "range": [
+              0,
+              2000
+            ]
+          },
+          "legend": {
+            "orient": "bottom"
+          }
+        },
+        "color": {
+          "field": "Days",
+          "type": "quantitative",
+          "title": "Days since 01/10/2022 of peak",
+          "scale": {
+            "type": "threshold",
+            "scheme": "greens",
+            "domain": [
+              12,
+              13,
+              14,
+              15,
+              20
+            ],
+            "reverse": true
+          },
+          "legend": {
+            "orient": "bottom"
+          }
+        },
+        "tooltip": [
+          {
+            "field": "Name",
+            "type": "nominal",
+            "title": "Station"
+          },
+          {
+            "field": "Max Height",
+            "type": "quantitative",
+            "title": "Maximum height increase from 01/10/2022",
+            "format": "m"
+          },
+          {
+            "field": "Days",
+            "type": "quantitative",
+            "title": "Days since 01/10/2022 of maximum height"
+          }
         ]
       }
-    }
-  ],
-  "transform": [
-    {
-      "filter": "datum.Basin == Basin"
     }
   ]
 }
