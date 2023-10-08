@@ -11,27 +11,53 @@
   "encoding": {
     "x": {
       "field": "Day",
-      "type": "temporal"
+      "type": "temporal",
+      "axis": {
+        "title": "Date"
+      }
     },
     "y": {
       "field": "Mean",
-      "type": "quantitative"
+      "type": "quantitative",
+      "axis": {
+        "title": "River height (m)"
+      }
     },
     "color": {
       "field": "Station",
       "type": "nominal"
-    }
+    },
+    "tooltip": [
+      {
+        "field": "Station",
+        "type": "nominal"
+      },
+      {
+        "field": "Mean",
+        "type": "quantitative",
+        "format": ".1f",
+        "title": "Water level (m)"
+      }
+    ]
   },
   "mark": "line",
-  "params": [{
-    "name": "Basin",
-    "value": "Campaspe River at Echuca",
-    "bind": {
-      "input": "checkbox",
-      "name": "Station"
+  "params": [
+    {
+      "name": "Basin",
+      "value": "Campaspe River Basin",
+      "bind": {
+        "input": "select",
+        "options": [
+          "Campaspe River Basin",
+          "Murray Basin",
+          "Goulburn River Basin"
+        ]
+      }
     }
-  }],
+  ],
   "transform": [
-    {"filter": "datum.Station == Basin"}
+    {
+      "filter": "datum.Basin == Basin"
+    }
   ]
 }
