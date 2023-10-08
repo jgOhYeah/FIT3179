@@ -6,43 +6,87 @@
   "title": {
     "text": "Water levels over time"
   },
+  "params": [
+    {
+      "name": "Basin",
+      "value": "Campaspe River Basin",
+      "bind": {
+        "input": "select",
+        "options": [
+          "Campaspe River Basin",
+          "Murray Basin",
+          "Goulburn River Basin"
+        ]
+      }
+    }
+  ],
+  "transform": [
+    {
+      "filter": "datum.Basin == Basin"
+    }
+  ],
   "hconcat": [
     {
       "width": 500,
       "height": "container",
-      "encoding": {
-        "x": {
-          "field": "Day",
-          "type": "temporal",
-          "axis": {
-            "title": "Date"
-          }
-        },
-        "y": {
-          "field": "Mean",
-          "type": "quantitative",
-          "axis": {
-            "title": "River height (m)"
-          }
-        },
-        "color": {
-          "field": "Station",
-          "type": "nominal"
-        },
-        "tooltip": [
-          {
-            "field": "Station",
-            "type": "nominal"
+      "layer": [
+        {
+          "encoding": {
+            "x": {
+              "field": "Day",
+              "type": "temporal",
+              "axis": {
+                "title": "Date"
+              }
+            },
+            "y": {
+              "field": "Mean",
+              "type": "quantitative",
+              "axis": {
+                "title": "River height (m)"
+              }
+            },
+            "color": {
+              "field": "Station",
+              "type": "nominal"
+            },
+            "tooltip": [
+              {
+                "field": "Day",
+                "type": "temporal",
+                "title": "Date"
+              },
+              {
+                "field": "Station",
+                "type": "nominal"
+              },
+              {
+                "field": "Basin",
+                "type": "nominal"
+              },
+              {
+                "field": "Mean",
+                "type": "quantitative",
+                "format": ".1f",
+                "title": "Water level (m)"
+              }
+            ]
           },
-          {
-            "field": "Mean",
-            "type": "quantitative",
-            "format": ".1f",
-            "title": "Water level (m)"
+          "mark": "line"
+        },
+        {
+          "mark": "text",
+          "data": {
+            "values": [
+              {
+                "Comment": "Lake Eppalock sensor is disrupted",
+                "Day": "2022-10-14",
+                "yPos": 50
+              }
+            ]
           }
-        ]
-      },
-      "mark": "line"
+        }
+      ]
     },
     {
       "width": 500,
@@ -161,7 +205,8 @@
             "type": "circle",
             "tooltip": {
               "content": "data"
-            }
+            },
+            "fill": "green"
           },
           "encoding": {
             "longitude": {
@@ -187,27 +232,8 @@
                 ]
               },
               "legend": {
-                "orient": "bottom"
-              }
-            },
-            "color": {
-              "field": "Days",
-              "type": "quantitative",
-              "title": "Days since 01/10/2022 of peak",
-              "scale": {
-                "type": "threshold",
-                "scheme": "greens",
-                "domain": [
-                  12,
-                  13,
-                  14,
-                  15,
-                  20
-                ],
-                "reverse": true
-              },
-              "legend": {
-                "orient": "bottom"
+                "orient": "right",
+                "gridAlign": "all"
               }
             },
             "tooltip": [
