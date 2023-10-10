@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Arvo&display=swap');
+
+body {
+    padding: 10px 20px;
+    background-color: #0F0F0F;
+    color: #dddddd;
+}
+
+h1 {
+    font-family: 'Arvo', serif;
+    font-size: 42px;
+}
+
+h2 {
+    font-family: 'Arvo', serif;
+}
+
+p {
+    font-size: 18px;
+}
+
+.text-block {
+    margin: 40px 20px 20px 20px;
+    padding: 10px 20px 30px 20px;
+    background-color: #232D3F;
+}
+
+.timeline {
+    background-color: #232D3F;
+    height: calc(100vh - 120px);
+    position:fixed;
+    width: 15%;
+    top: 10px;
+    right: 20px;
+}
