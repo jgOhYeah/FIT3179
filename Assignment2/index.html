@@ -7,7 +7,7 @@
     <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
     <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
 
-    <title>2022 Northern Victoria Floods</title>
+    <title>2022 Rochester Floods</title>
     <link rel="icon"
         href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>☔</text></svg>">
 
@@ -22,13 +22,14 @@
 </head>
 
 <body>
-    <h1>2022 Northern Victorian Floods</h1>
+    <h1>2022 Rochester Floods</h1>
     <div class="pure-g">
         <div class="pure-u-4-5">
             <div class="text-block">
-                <p>In October 2022, servere weather and rainfall caused widespread and destructive flooding across
-                    northern
-                    Victoria.</p>
+                <p>
+                    In October 2022, servere weather and rainfall caused widespread and destructive flooding across
+                    northern Victoria. The town of Rochester sists on the Campaspe River downstream of Lake Eppalock.
+                </p>
             </div>
             <div class="text-block">
                 <h2>The rains</h2>
@@ -61,15 +62,26 @@
                     Victoria.</p>
                 <div id="rains-figure"></div>
             </div>
+            <div class="text-block">
+                <h2>Axedale bridge washed away</h2>
+                <p>Another set of charts here</p>
+                <div id="rains-figure"></div>
+            </div>
         </div>
         <div class="pure-u-1-5">
             <div class="text-block timeline">
                 <h2>Timeline</h2>
+                <div id="timeline-figure"></div>
             </div>
         </div>
     </div>
 
     <script type="text/javascript">
+        var spec = "js/timeline-figure.vg.json";
+        vegaEmbed('#timeline-figure', spec).then(function (result) {
+            // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+            console.log("Callback called");
+        }).catch(console.error);
 
         var spec = "js/rains-figure.vg.json";
         vegaEmbed('#rains-figure', spec).then(function (result) {
