@@ -65,7 +65,7 @@
             <div class="text-block">
                 <h2>Axedale bridge washed away</h2>
                 <p>Another set of charts here</p>
-                <div id="rains-figure"></div>
+                <div id="rains-figure2"></div>
             </div>
         </div>
         <div class="pure-u-1-5">
@@ -85,6 +85,12 @@
 
         var spec = "js/rains-figure.vg.json";
         vegaEmbed('#rains-figure', spec).then(function (result) {
+            // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+            console.log("Callback called");
+        }).catch(console.error);
+
+        var spec = "js/rains-figure.vg.json";
+        vegaEmbed('#rains-figure2', spec).then(function (result) {
             // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
             console.log("Callback called");
         }).catch(console.error);
