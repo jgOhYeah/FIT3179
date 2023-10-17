@@ -23,78 +23,20 @@
 
 <body>
     <h1>2022 Rochester Floods</h1>
-    <div class="pure-g">
-        <div class="pure-u-4-5">
-            <div class="text-block">
-                <p>
-                    In October 2022, servere weather and rainfall caused widespread and destructive flooding across
-                    northern Victoria. The town of Rochester sists on the Campaspe River downstream of Lake Eppalock.
-                </p>
-            </div>
-            <div class="text-block">
-                <h2>The rains</h2>
-                <p>In October 2022, servere weather and rainfall caused widespread and destructive flooding across
-                    northern
-                    Victoria.</p>
-                <div id="rains-figure"></div>
-            </div>
-
-            <div class="text-block">
-                <h2>Water reaches the spillway of Lake Eppalock</h2>
-                <p>In October 2022, servere weather and rainfall caused widespread and destructive flooding across
-                    northern
-                    Victoria.</p>
-                <div id="rains-figure"></div>
-            </div>
-
-            <div class="text-block">
-                <h2>Rochester reaches minor flood levels</h2>
-                <p>In October 2022, servere weather and rainfall caused widespread and destructive flooding across
-                    northern
-                    Victoria.</p>
-                <div id="rains-figure"></div>
-            </div>
-
-            <div class="text-block">
-                <h2>Axedale bridge washed away</h2>
-                <p>In October 2022, servere weather and rainfall caused widespread and destructive flooding across
-                    northern
-                    Victoria.</p>
-                <div id="rains-figure"></div>
-            </div>
-            <div class="text-block">
-                <h2>Axedale bridge washed away</h2>
-                <p>Another set of charts here</p>
-                <div id="rains-figure2"></div>
-            </div>
-        </div>
-        <div class="pure-u-1-5">
-            <div class="text-block timeline">
-                <h2>Timeline</h2>
-                <div id="timeline-figure"></div>
-            </div>
-        </div>
+    <div class="text-block">
+        <p>
+            In October 2022, servere weather and rainfall caused widespread and destructive flooding across
+            northern Victoria. The town of Rochester sists on the Campaspe River downstream of Lake Eppalock.
+        </p>
     </div>
+    <div id="rains-figure"></div>
 
     <script type="text/javascript">
-        var spec = "js/timeline-figure.vg.json";
-        vegaEmbed('#timeline-figure', spec).then(function (result) {
-            // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
-            console.log("Callback called");
-        }).catch(console.error);
-
         var spec = "js/rains-figure.vg.json";
         vegaEmbed('#rains-figure', spec).then(function (result) {
             // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
             console.log("Callback called");
         }).catch(console.error);
-
-        var spec = "js/rains-figure.vg.json";
-        vegaEmbed('#rains-figure2', spec).then(function (result) {
-            // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
-            console.log("Callback called");
-        }).catch(console.error);
-
     </script>
 
 </body>
