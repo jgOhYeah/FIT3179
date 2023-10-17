@@ -8,68 +8,6 @@
   },
   "hconcat": [
     {
-      "width": 350,
-      "height": 500,
-      "layer": [
-        {
-          "encoding": {
-            "x": {
-              "field": "Day",
-              "type": "temporal",
-              "axis": {
-                "title": "Date"
-              }
-            },
-            "y": {
-              "field": "Mean",
-              "type": "quantitative",
-              "axis": {
-                "title": "River height (m)"
-              }
-            },
-            "color": {
-              "field": "Name",
-              "type": "nominal"
-            },
-            "tooltip": [
-              {
-                "field": "Day",
-                "type": "temporal",
-                "title": "Date"
-              },
-              {
-                "field": "Name",
-                "type": "nominal"
-              },
-              {
-                "field": "Basin",
-                "type": "nominal"
-              },
-              {
-                "field": "Mean",
-                "type": "quantitative",
-                "format": ".1f",
-                "title": "Water level (m)"
-              }
-            ]
-          },
-          "mark": "line"
-        },
-        {
-          "mark": "text",
-          "data": {
-            "values": [
-              {
-                "Comment": "Lake Eppalock sensor is disrupted",
-                "Day": "2022-10-14",
-                "yPos": 50
-              }
-            ]
-          }
-        }
-      ]
-    },
-    {
       "width": 450,
       "height": 500,
       "title": "Maximum river heights during the 2022 Northern Victoria floods",
@@ -217,6 +155,68 @@
                 ]
               }
             }
+          }
+        }
+      ]
+    },
+    {
+      "width": 350,
+      "height": 500,
+      "layer": [
+        {
+          "encoding": {
+            "x": {
+              "field": "Day",
+              "type": "temporal",
+              "axis": {
+                "title": "Date"
+              }
+            },
+            "y": {
+              "field": "Mean",
+              "type": "quantitative",
+              "axis": {
+                "title": "River height (m)"
+              }
+            },
+            "color": {
+              "field": "Name",
+              "type": "nominal"
+            },
+            "tooltip": [
+              {
+                "field": "Day",
+                "type": "temporal",
+                "title": "Date"
+              },
+              {
+                "field": "Name",
+                "type": "nominal"
+              },
+              {
+                "field": "Basin",
+                "type": "nominal"
+              },
+              {
+                "field": "Mean",
+                "type": "quantitative",
+                "format": ".1f",
+                "title": "Water level (m)"
+              }
+            ]
+          },
+          "mark": "line"
+        },
+        {
+          "mark": "text",
+          "data": {
+            "values": [
+              {
+                "Comment": "Lake Eppalock sensor is disrupted",
+                "Day": "2022-10-14",
+                "yPos": 50
+              }
+            ]
           }
         }
       ]
