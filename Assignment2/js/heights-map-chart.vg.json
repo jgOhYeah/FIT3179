@@ -10,7 +10,7 @@
     {
       "width": 450,
       "height": 500,
-      "title": "Maximum river heights during the 2022 Northern Victoria floods",
+      "title": "Maximum river heights and flood classifications",
       "projection": {
         "type": "equirectangular",
         "center": [
@@ -120,6 +120,15 @@
           "data": {
             "url": "data/LocationsHeights.csv"
           },
+          "params": [
+            {
+              "name": "station_select",
+              "select": {
+                "type": "point",
+                "fields": ["Site ID"]
+              }
+            }
+          ],
           "mark": {
             "type": "circle",
             "tooltip": {
@@ -171,7 +180,7 @@
       },
       "transform": [
         {
-          "filter": "datum[\"Site ID\"] == 406202"
+          "filter": "datum[\"Site ID\"] == station_select[\"Site ID\"]"
         }
       ],
       "title": "Heights for the selected town",
@@ -236,7 +245,7 @@
           },
           "transform": [
             {
-              "filter": "datum[\"Site ID\"] == 406202"
+              "filter": "datum[\"Site ID\"] == station_select[\"Site ID\"]"
             }
           ]
         },
@@ -263,7 +272,7 @@
           },
           "transform": [
             {
-              "filter": "datum[\"Site ID\"] == 406202"
+              "filter": "datum[\"Site ID\"] == station_select[\"Site ID\"]"
             }
           ]
         },
@@ -287,7 +296,7 @@
           },
           "transform": [
             {
-              "filter": "datum[\"Site ID\"] == 406202"
+              "filter": "datum[\"Site ID\"] == station_select[\"Site ID\"]"
             }
           ]
         },
@@ -314,7 +323,7 @@
           },
           "transform": [
             {
-              "filter": "datum[\"Site ID\"] == 406202"
+              "filter": "datum[\"Site ID\"] == station_select[\"Site ID\"]"
             }
           ]
         },
@@ -324,7 +333,7 @@
           },
           "mark": {
             "type": "rule",
-            "stroke": "yellow"
+            "stroke": "black"
           },
           "encoding": {
             "y": {
@@ -338,7 +347,7 @@
           },
           "transform": [
             {
-              "filter": "datum[\"Site ID\"] == 406202"
+              "filter": "datum[\"Site ID\"] == station_select[\"Site ID\"]"
             }
           ]
         },
@@ -365,7 +374,7 @@
           },
           "transform": [
             {
-              "filter": "datum[\"Site ID\"] == 406202"
+              "filter": "datum[\"Site ID\"] == station_select[\"Site ID\"]"
             }
           ]
         }

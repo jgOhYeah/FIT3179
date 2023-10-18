@@ -1,9 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Arvo&display=swap');
 
 body {
-    padding: 10px 20px;
-    background-color: #0F0F0F;
+    padding: 10px 100px;
+    background-color: hsl(0, 0%, 6%);
     color: #dddddd;
+    width: 1000px;
+    margin: auto;
 }
 
 h1 {
