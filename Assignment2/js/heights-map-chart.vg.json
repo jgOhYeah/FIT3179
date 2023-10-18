@@ -3,117 +3,61 @@
   "data": {
     "url": "data/LocationsHeights.csv"
   },
-  "title": {
-    "text": "Water levels over time"
-  },
-  "hconcat": [
+  "vconcat": [
     {
-      "width": 450,
-      "height": 500,
+      "width": 700,
+      "height": 400,
       "title": "Maximum river heights and flood classifications",
       "projection": {
-        "type": "equirectangular",
-        "center": [
-          144.3,
-          -36.5
-        ],
-        "scale": 20000
+        "type": "equirectangular"
+      },
+      "view": {
+        "strokeWidth": 0
       },
       "layer": [
         {
           "data": {
-            "url": "data/reservoirs.topojson",
+            "url": "data/VictoriaAll.json",
             "format": {
               "type": "topojson",
-              "feature": "reservoirs"
+              "feature": "Victoria"
             }
           },
           "mark": {
             "type": "geoshape",
-            "fill": "lightblue",
-            "stroke": "lightblue"
+            "fill": "#ccc",
+            "stroke": "#888",
+            "strokeWidth": 3
           }
         },
         {
           "data": {
-            "url": "data/victoria.topojson",
+            "url": "data/VictoriaAll.json",
             "format": {
               "type": "topojson",
-              "feature": "victoria"
+              "feature": "VictoriaRivers"
             }
           },
           "mark": {
             "type": "geoshape",
             "fill": null,
-            "stroke": "gray",
-            "strokeWidth": 4
+            "stroke": "#6498d2",
+            "strokeWidth": 3
           }
         },
         {
           "data": {
-            "url": "data/towns.csv"
-          },
-          "encoding": {
-            "longitude": {
-              "field": "X",
-              "type": "quantitative"
-            },
-            "latitude": {
-              "field": "Y",
-              "type": "quantitative"
-            }
-          },
-          "layer": [
-            {
-              "mark": {
-                "type": "circle",
-                "fill": "lightgray",
-                "stroke": "lightgray",
-                "strokeWidth": 2
-              }
-            },
-            {
-              "mark": {
-                "type": "text",
-                "dy": -10,
-                "align": "left"
-              },
-              "encoding": {
-                "text": {
-                  "field": "name",
-                  "type": "nominal"
-                }
-              }
-            }
-          ]
-        },
-        {
-          "data": {
-            "url": "data/rivers.topojson",
+            "url": "data/VictoriaAll.json",
             "format": {
               "type": "topojson",
-              "feature": "rivers"
+              "feature": "VictoriaLakes"
             }
           },
           "mark": {
             "type": "geoshape",
-            "fill": null,
-            "stroke": "lightblue",
-            "strokeWidth": 2
-          }
-        },
-        {
-          "data": {
-            "url": "data/graticles.topojson",
-            "format": {
-              "type": "topojson",
-              "feature": "graticles"
-            }
-          },
-          "mark": {
-            "type": "geoshape",
-            "fill": null,
-            "stroke": "lightgray"
+            "fill": "#a5bfdd",
+            "stroke": "#6498d2",
+            "strokeWidth": 3
           }
         },
         {
@@ -173,6 +117,9 @@
                   "red",
                   "darkred"
                 ]
+              },
+              "legend": {
+                "orient": "top"
               }
             },
             "size": {
@@ -182,21 +129,38 @@
               "scale": {
                 "domain": [
                   0,
-                  10
+                  15
                 ],
                 "range": [
                   0,
-                  2000
+                  800
                 ]
+              },
+              "legend": {
+                "orient": "top"
               }
-            }
+            },
+            "tooltip": [
+              {
+                "field": "Station ",
+                "title": "Station"
+              },
+              {
+                "field": "Max Height",
+                "title": "Maximum height (m)"
+              },
+              {
+                "field": "MaxCategory",
+                "title": "Flood level reached"
+              }
+            ]
           }
         }
       ]
     },
     {
-      "width": 350,
-      "height": 500,
+      "width": 700,
+      "height": 200,
       "data": {
         "url": "data/RiverHeights.csv"
       },
