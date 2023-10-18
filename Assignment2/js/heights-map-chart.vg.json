@@ -125,7 +125,10 @@
               "name": "station_select",
               "select": {
                 "type": "point",
-                "fields": ["Site ID"]
+                "fields": [
+                  "Site ID",
+                  "Station "
+                ]
               }
             }
           ],
@@ -147,16 +150,35 @@
             "color": {
               "field": "MaxCategory",
               "type": "ordinal",
-              "sort": ["Unclassified", "Below minor", "Minor", "Moderate", "Major"],
+              "sort": [
+                "Unclassified",
+                "Below minor",
+                "Minor",
+                "Moderate",
+                "Major"
+              ],
+              "title": "Flood level reached",
               "scale": {
-                "domain": ["Unclassified", "Below minor", "Minor", "Moderate", "Major"],
-                "range": ["grey", "green", "yellow", "orange", "red"]
+                "domain": [
+                  "Unclassified",
+                  "Below minor",
+                  "Minor",
+                  "Moderate",
+                  "Major"
+                ],
+                "range": [
+                  "grey",
+                  "green",
+                  "orange",
+                  "red",
+                  "darkred"
+                ]
               }
             },
             "size": {
               "field": "Max Height",
               "type": "quantitative",
-              "title": "Maximum height",
+              "title": "Maximum height (m)",
               "scale": {
                 "domain": [
                   0,
@@ -180,10 +202,14 @@
       },
       "transform": [
         {
-          "filter": "datum[\"Site ID\"] == station_select[\"Site ID\"]"
+          "filter": "datum[\"Site ID\"] == (isDefined(station_select[\"Site ID\"]) ? station_select[\"Site ID\"] : 406202)"
         }
       ],
-      "title": "Heights for the selected town",
+      "title": {
+        "text": {
+          "expr": "\"Heights for \" + (isDefined(station_select[\"Station \"]) ? station_select[\"Station \"] : \"Rochester Syphon\")"
+        }
+      },
       "layer": [
         {
           "encoding": {
@@ -231,7 +257,7 @@
           },
           "mark": {
             "type": "rule",
-            "stroke": "red"
+            "stroke": "darkred"
           },
           "encoding": {
             "y": {
@@ -245,7 +271,7 @@
           },
           "transform": [
             {
-              "filter": "datum[\"Site ID\"] == station_select[\"Site ID\"]"
+              "filter": "datum[\"Site ID\"] == (isDefined(station_select[\"Site ID\"]) ? station_select[\"Site ID\"] : 406202)"
             }
           ]
         },
@@ -255,7 +281,7 @@
           },
           "mark": {
             "type": "text",
-            "stroke": "red"
+            "stroke": "darkred"
           },
           "encoding": {
             "y": {
@@ -272,7 +298,7 @@
           },
           "transform": [
             {
-              "filter": "datum[\"Site ID\"] == station_select[\"Site ID\"]"
+              "filter": "datum[\"Site ID\"] == (isDefined(station_select[\"Site ID\"]) ? station_select[\"Site ID\"] : 406202)"
             }
           ]
         },
@@ -282,7 +308,7 @@
           },
           "mark": {
             "type": "rule",
-            "stroke": "orange"
+            "stroke": "red"
           },
           "encoding": {
             "y": {
@@ -296,7 +322,7 @@
           },
           "transform": [
             {
-              "filter": "datum[\"Site ID\"] == station_select[\"Site ID\"]"
+              "filter": "datum[\"Site ID\"] == (isDefined(station_select[\"Site ID\"]) ? station_select[\"Site ID\"] : 406202)"
             }
           ]
         },
@@ -306,7 +332,7 @@
           },
           "mark": {
             "type": "text",
-            "stroke": "orange"
+            "stroke": "red"
           },
           "encoding": {
             "y": {
@@ -323,7 +349,7 @@
           },
           "transform": [
             {
-              "filter": "datum[\"Site ID\"] == station_select[\"Site ID\"]"
+              "filter": "datum[\"Site ID\"] == (isDefined(station_select[\"Site ID\"]) ? station_select[\"Site ID\"] : 406202)"
             }
           ]
         },
@@ -333,7 +359,7 @@
           },
           "mark": {
             "type": "rule",
-            "stroke": "black"
+            "stroke": "orange"
           },
           "encoding": {
             "y": {
@@ -347,7 +373,7 @@
           },
           "transform": [
             {
-              "filter": "datum[\"Site ID\"] == station_select[\"Site ID\"]"
+              "filter": "datum[\"Site ID\"] == (isDefined(station_select[\"Site ID\"]) ? station_select[\"Site ID\"] : 406202)"
             }
           ]
         },
@@ -357,7 +383,7 @@
           },
           "mark": {
             "type": "text",
-            "stroke": "black"
+            "stroke": "orange"
           },
           "encoding": {
             "y": {
@@ -374,7 +400,7 @@
           },
           "transform": [
             {
-              "filter": "datum[\"Site ID\"] == station_select[\"Site ID\"]"
+              "filter": "datum[\"Site ID\"] == (isDefined(station_select[\"Site ID\"]) ? station_select[\"Site ID\"] : 406202)"
             }
           ]
         }
