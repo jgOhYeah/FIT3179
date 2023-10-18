@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "data": {
-    "url": "data/RiverHeights.csv"
+    "url": "data/LocationsHeights.csv"
   },
   "title": {
     "text": "Water levels over time"
@@ -138,12 +138,16 @@
             "color": {
               "field": "MaxCategory",
               "type": "ordinal",
-              "sort": ["Unclassified", "Below minor", "Minor", "Moderate", "Major"]
+              "sort": ["Unclassified", "Below minor", "Minor", "Moderate", "Major"],
+              "scale": {
+                "domain": ["Unclassified", "Below minor", "Minor", "Moderate", "Major"],
+                "range": ["grey", "green", "yellow", "orange", "red"]
+              }
             },
             "size": {
               "field": "Max Height",
               "type": "quantitative",
-              "title": "Maximum height compared to 01/10/2022 (m)",
+              "title": "Maximum height",
               "scale": {
                 "domain": [
                   0,
@@ -162,6 +166,15 @@
     {
       "width": 350,
       "height": 500,
+      "data": {
+        "url": "data/RiverHeights.csv"
+      },
+      "transform": [
+        {
+          "filter": "datum[\"Site ID\"] == 406202"
+        }
+      ],
+      "title": "Heights for the selected town",
       "layer": [
         {
           "encoding": {
@@ -178,10 +191,6 @@
               "axis": {
                 "title": "River height (m)"
               }
-            },
-            "color": {
-              "field": "Name",
-              "type": "nominal"
             },
             "tooltip": [
               {
@@ -208,16 +217,157 @@
           "mark": "line"
         },
         {
-          "mark": "text",
           "data": {
-            "values": [
-              {
-                "Comment": "Lake Eppalock sensor is disrupted",
-                "Day": "2022-10-14",
-                "yPos": 50
+            "url": "data/LocationsHeights.csv"
+          },
+          "mark": {
+            "type": "rule",
+            "stroke": "red"
+          },
+          "encoding": {
+            "y": {
+              "field": "Major ",
+              "type": "quantitative",
+              "title": "Major flood level",
+              "axis": {
+                "title": ""
               }
-            ]
-          }
+            }
+          },
+          "transform": [
+            {
+              "filter": "datum[\"Site ID\"] == 406202"
+            }
+          ]
+        },
+        {
+          "data": {
+            "url": "data/LocationsHeights.csv"
+          },
+          "mark": {
+            "type": "text",
+            "stroke": "red"
+          },
+          "encoding": {
+            "y": {
+              "field": "Major ",
+              "type": "quantitative",
+              "title": "Major flood level",
+              "axis": {
+                "title": ""
+              }
+            },
+            "text": {
+              "value": "Major flood level"
+            }
+          },
+          "transform": [
+            {
+              "filter": "datum[\"Site ID\"] == 406202"
+            }
+          ]
+        },
+        {
+          "data": {
+            "url": "data/LocationsHeights.csv"
+          },
+          "mark": {
+            "type": "rule",
+            "stroke": "orange"
+          },
+          "encoding": {
+            "y": {
+              "field": "Moderate ",
+              "type": "quantitative",
+              "title": "Moderate flood level",
+              "axis": {
+                "title": ""
+              }
+            }
+          },
+          "transform": [
+            {
+              "filter": "datum[\"Site ID\"] == 406202"
+            }
+          ]
+        },
+        {
+          "data": {
+            "url": "data/LocationsHeights.csv"
+          },
+          "mark": {
+            "type": "text",
+            "stroke": "orange"
+          },
+          "encoding": {
+            "y": {
+              "field": "Moderate ",
+              "type": "quantitative",
+              "title": "Moderate flood level",
+              "axis": {
+                "title": ""
+              }
+            },
+            "text": {
+              "value": "Moderate flood level"
+            }
+          },
+          "transform": [
+            {
+              "filter": "datum[\"Site ID\"] == 406202"
+            }
+          ]
+        },
+        {
+          "data": {
+            "url": "data/LocationsHeights.csv"
+          },
+          "mark": {
+            "type": "rule",
+            "stroke": "yellow"
+          },
+          "encoding": {
+            "y": {
+              "field": "Minor ",
+              "type": "quantitative",
+              "title": "Minor flood level",
+              "axis": {
+                "title": ""
+              }
+            }
+          },
+          "transform": [
+            {
+              "filter": "datum[\"Site ID\"] == 406202"
+            }
+          ]
+        },
+        {
+          "data": {
+            "url": "data/LocationsHeights.csv"
+          },
+          "mark": {
+            "type": "text",
+            "stroke": "black"
+          },
+          "encoding": {
+            "y": {
+              "field": "Minor ",
+              "type": "quantitative",
+              "title": "Minor flood level",
+              "axis": {
+                "title": ""
+              }
+            },
+            "text": {
+              "value": "Minor flood level"
+            }
+          },
+          "transform": [
+            {
+              "filter": "datum[\"Site ID\"] == 406202"
+            }
+          ]
         }
       ]
     }
