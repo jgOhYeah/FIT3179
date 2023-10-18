@@ -29,21 +29,41 @@
             of Victoria.
         </p>
 
-        <h2>Where were the rains and flood effected areas?</h2>
-
-
-        <h2>How high did the floodwaters go?</h2>
+        <h2>How high did the floodwaters get?</h2>
         <p>
-            Click on a point to see its recorded data over the course of the flood.
+            Click on a station to see how the river levels changed over the course of the flood.
         </p>
         <div id="heights-map-chart" class="figure"></div>
-    </div>
 
+        <h2>Where did this data come from?</h2>
+        <p>River height data is provided by remote monitoring stations that automatically collect river height and other
+            data. This is used by many services including the <a
+                href="http://www.bom.gov.au/vic/flood/index.shtml">Bureau of Meteorology (BoM)</a> and play an essential
+            role in the monitoring, predicting and coordinating responses to weather events like occured in October
+            2022.</p>
+        <p>
+            Due to their often isolated locations and proximity to the bodies of water they monitor, the stations do not
+            always survive the floods.
+        </p>
+        <div id="basins-chart" class="figure"></div>
+
+        <h2>Data sources</h2>
+        <ul>
+            <li><a href="https://data.water.vic.gov.au/">Victorian Government Department of Environment, Land, Water and Planning (DELWP)</a></li>
+            <li><a href="http://www.bom.gov.au/vic/flood/index.shtml">Bureau of Meteorology (BoM)</a></li>
+            <li><a href="https://www.naturalearthdata.com/">Natural Earth</a></li>
+        </ul>
+    </div>
 
 
     <script type="text/javascript">
         var spec = "js/heights-map-chart.vg.json";
         vegaEmbed('#heights-map-chart', spec).then(function (result) {
+            // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+        }).catch(console.error);
+
+        spec = "js/basins-chart.vg.json";
+        vegaEmbed('#basins-chart', spec).then(function (result) {
             // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
         }).catch(console.error);
     </script>

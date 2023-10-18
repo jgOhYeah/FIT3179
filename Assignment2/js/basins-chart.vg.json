@@ -1,0 +1,161 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "data": {
+        "url": "data/AllStations.csv"
+    },
+    "hconcat": [
+        {
+            "width": 350,
+            "height": 200,
+            "title": "All water level monitoring stations in victoria",
+            "projection": {
+                "type": "equirectangular"
+            },
+            "view": {
+                "strokeWidth": 0
+            },
+            "layer": [
+                {
+                    "data": {
+                        "url": "data/VictoriaAll.json",
+                        "format": {
+                            "type": "topojson",
+                            "feature": "Victoria"
+                        }
+                    },
+                    "mark": {
+                        "type": "geoshape",
+                        "fill": "#ccc",
+                        "stroke": "#888",
+                        "strokeWidth": 3
+                    }
+                },
+                {
+                    "data": {
+                        "url": "data/VictoriaAll.json",
+                        "format": {
+                            "type": "topojson",
+                            "feature": "VictoriaGraticules"
+                        }
+                    },
+                    "mark": {
+                        "type": "geoshape",
+                        "fill": null,
+                        "stroke": "#ddd",
+                        "strokeWidth": 1
+                    }
+                },
+                {
+                    "data": {
+                        "url": "data/VictoriaAll.json",
+                        "format": {
+                            "type": "topojson",
+                            "feature": "VictoriaRivers"
+                        }
+                    },
+                    "mark": {
+                        "type": "geoshape",
+                        "fill": null,
+                        "stroke": "#6498d2",
+                        "strokeWidth": 3
+                    }
+                },
+                {
+                    "data": {
+                        "url": "data/VictoriaAll.json",
+                        "format": {
+                            "type": "topojson",
+                            "feature": "VictoriaLakes"
+                        }
+                    },
+                    "mark": {
+                        "type": "geoshape",
+                        "fill": "#a5bfdd",
+                        "stroke": "#6498d2",
+                        "strokeWidth": 3
+                    }
+                },
+                {
+                    "data": {
+                        "url": "data/AllStations.csv"
+                    },
+                    "params": [
+                        {
+                            "name": "station_select",
+                            "select": {
+                                "type": "point",
+                                "fields": [
+                                    "Site Id",
+                                    "Name"
+                                ]
+                            }
+                        }
+                    ],
+                    "mark": {
+                        "type": "circle",
+                        "tooltip": {
+                            "content": "data"
+                        }
+                    },
+                    "encoding": {
+                        "longitude": {
+                            "field": "Longitude",
+                            "type": "quantitative"
+                        },
+                        "latitude": {
+                            "field": "Latitude",
+                            "type": "quantitative"
+                        },
+                        "color": {
+                            "field": "Basin",
+                            "type": "nominal",
+                            "legend": null
+                        },
+                        "tooltip": [
+                            {
+                                "field": "Name",
+                                "title": "Station"
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "width": 350,
+            "height": 200,
+            "data": {
+                "url": "data/RiverHeights.csv"
+            },
+            "title": {
+                "text": "Number of stations in each basin"
+            },
+            "layer": [
+                {
+                    "mark": "bar",
+                    "data": {
+                        "url": "data/StationsPerBasin.csv"
+                    },
+                    "encoding": {
+                        "x": {
+                            "field": "Basin",
+                            "type": "nominal",
+                            "sort": {
+                                "field": "Name",
+                                "order": "descending"
+                            }
+                        },
+                        "y": {
+                            "field": "Name",
+                            "type": "quantitative"
+                        },
+                        "color": {
+                            "field": "Basin",
+                            "type": "nominal"
+                        }
+                    }
+                }
+            ]
+        }
+    ]
+}

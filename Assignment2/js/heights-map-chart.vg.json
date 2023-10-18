@@ -35,6 +35,21 @@
             "url": "data/VictoriaAll.json",
             "format": {
               "type": "topojson",
+              "feature": "VictoriaGraticules"
+            }
+          },
+          "mark": {
+            "type": "geoshape",
+            "fill": null,
+            "stroke": "#ddd",
+            "strokeWidth": 1
+          }
+        },
+        {
+          "data": {
+            "url": "data/VictoriaAll.json",
+            "format": {
+              "type": "topojson",
               "feature": "VictoriaRivers"
             }
           },
