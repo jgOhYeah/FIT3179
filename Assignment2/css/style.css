@@ -2,8 +2,8 @@
 
 body {
     padding: 10px 100px;
-    background-color: hsl(0, 0%, 6%);
-    color: #dddddd;
+    background-color: #eeeeee;
+    color: hsl(0, 0%, 6%);
     width: 1000px;
     margin: auto;
 }
